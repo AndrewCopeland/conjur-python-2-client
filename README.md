@@ -78,5 +78,5 @@ This method will return a list of all of the resource ids. A list with all of th
 ```python
 >>> from conjur.client import Client
 >>> client = Client()
->>> client.list_resources()
+>>> client.list_resources_simple()
 ```
