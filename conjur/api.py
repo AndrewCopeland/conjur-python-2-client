@@ -3,6 +3,7 @@ import requests
 import urllib
 from .config import Config
 import json
+from urllib import quote
 
 class ConjurApiError(Exception):
     pass
@@ -31,7 +32,7 @@ class Api():
     
     def authenticate(self):
         api_key = self.login()
-        url = "{}/authn/{}/{}/authenticate".format(self.config.appliance_url, self.config.account, self.config.username)
+        url = "{}/authn/{}/{}/authenticate".format(self.config.appliance_url, self.config.account, quote(self.config.username, safe=''))
         response = requests.post(url, data=api_key, verify=self.config.verify_ssl)
 
         if response.status_code != 200:
